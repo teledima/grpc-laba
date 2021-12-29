@@ -27,7 +27,7 @@ spec:
       resources: {}
       volumeMounts:
         - mountPath: /docker-entrypoint-initdb.d/init.sql
-          name: postgres-claim
+          name: postgres-init-volume
     
     - image: docker.io/teledima/grpc-server:v1
       name: grpc-server
