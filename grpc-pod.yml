@@ -18,7 +18,7 @@ spec:
         - name: postgres-claim
           mountPath: /
       command: ["/bin/sh"]
-      args: ["-c", "apt-get update && apt-get upgrade -y && apt-get install curl -y && curl https://raw.githubusercontent.com/teledima/grpc-laba/master/init.sql > init.sql"]
+      args: ["-c", "apt-get update && apt-get upgrade -y && apt-get install curl -y && curl --silent https://raw.githubusercontent.com/teledima/grpc-laba/master/init.sql > init.sql"]
   
     - image: postgres:14
       name: postgres
