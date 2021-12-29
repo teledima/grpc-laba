@@ -4,6 +4,7 @@ metadata:
   name: grpc-pod
   labels:
     app: grpc-service
+  namespace: grpc-namespace
 spec:
 
   restartPolicy: Always
