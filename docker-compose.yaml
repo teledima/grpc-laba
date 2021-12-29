@@ -19,7 +19,7 @@ services:
         
     grpc-server:
       restart: always
-      build: ./GrpcServer
+      image: docker.io/teledima/grpc-server
       environment:
         POSTGRES_HOST: postgres
         POSTGRES_PORT: 5432
