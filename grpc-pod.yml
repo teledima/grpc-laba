@@ -37,7 +37,7 @@ spec:
         - mountPath: /docker-entrypoint-initdb.d/init.sql
           name: postgres-claim
     
-    - image: grpc-server
+    - image: docker.io/teledima/grpc-server:v1
       name: grpc-server
       env:
         - name: POSTGRES_DB
@@ -52,4 +52,3 @@ spec:
           value: postgres
       ports:
         - containerPort: 5001
-      restartPolicy: Always
