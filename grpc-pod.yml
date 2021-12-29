@@ -18,7 +18,7 @@ spec:
         - name: postgres-claim
           mountPath: /docker-entrypoint-initdb.d
       command: ["/bin/sh"]
-      args: ["-c", "sudo apt-get install curl && curl https://raw.githubusercontent.com/teledima/grpc-laba/master/init.sql > /init.sql"]
+      args: ["-c", "apt-get install curl && curl https://raw.githubusercontent.com/teledima/grpc-laba/master/init.sql > /init.sql"]
   
     - image: postgres:14
       name: postgres
