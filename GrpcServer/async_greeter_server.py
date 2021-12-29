@@ -15,6 +15,7 @@
 
 import asyncio
 import logging
+import os
 
 import grpc
 
@@ -27,7 +28,12 @@ import psycopg2
 class Exporter(exporter_pb2_grpc.ExporterServicer):
     async def Export(self, request: exporter_pb2.Row, context: grpc.aio.ServicerContext) -> exporter_pb2.Reply:
         print(f'{request.game_name.value}, {request.category_name.value}, {request.achievement_name.value}, {request.downloadable_content_name.value}')
-        connection = psycopg2.connect(host='localhost', database='games', user='postgres', password='postgres', port=5432)
+        db_host = os.environ.get('POSTGRES_HOST')
+        db_name = os.environ.get('POSTGRES_DB')
+        db_user = os.environ.get('POSTGRES_USER')
+        db_pass = os.environ.get('POSTGRES_PASSWORD')
+        db_port = os.environ.get('POSTGRES_PORT')
+        connection = psycopg2.connect(host=db_host, database=db_name, user=db_user, password=db_pass, port=db_port)
         cursor = connection.cursor()
         cursor.execute('call export(%s, %s, %s, %s)',
                        (
