@@ -8,18 +8,11 @@ spec:
 
   restartPolicy: Always
   volumes:
-  - name: postgres-claim
-    emptyDir: {} 
+  - name: postgres-init-volume
+    hostPath:
+      path: /grpc-laba
 
-  containers:
-    - image: debian
-      name: debian
-      volumeMounts:
-        - name: postgres-claim
-          mountPath: /docker-entrypoint-initdb.d
-      command: ["/bin/sh"]
-      args: ["-c", "curl https://raw.githubusercontent.com/teledima/grpc-laba/master/init.sql > /init.sql"]
-  
+  containers:  
     - image: postgres:14
       name: postgres
       env:
