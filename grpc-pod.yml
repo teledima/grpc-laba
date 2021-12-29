@@ -16,7 +16,7 @@ spec:
       name: debian
       volumeMounts:
         - name: postgres-claim
-          mountPath: /
+          mountPath: /docker-entrypoint-initdb.d/
       command: ["/bin/sh"]
       args: ["-c", "apt-get update && apt-get upgrade -y && apt-get install curl -y && curl --silent https://raw.githubusercontent.com/teledima/grpc-laba/master/init.sql > init.sql"]
   
