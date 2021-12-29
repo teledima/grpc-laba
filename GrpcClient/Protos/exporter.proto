@@ -1,0 +1,20 @@
+syntax="proto3";
+import "google/protobuf/wrappers.proto";
+
+option csharp_namespace="GrpcGreeterClient";
+
+service Exporter {
+  // Export to postgreSQL
+  rpc Export(Row) returns (Reply);
+}
+
+message Row {
+  google.protobuf.StringValue game_name=1;
+  google.protobuf.StringValue achievement_name=2;
+  google.protobuf.StringValue downloadable_content_name=3;
+  google.protobuf.StringValue category_name=4;
+}
+
+message  Reply {
+  bool ok=1;
+}

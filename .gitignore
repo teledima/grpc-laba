@@ -1,0 +1,7 @@
+### GrpcClient ###
+GrpcClient/.vs
+GrpcClient/bin
+GrpcClient/obj
+### GrpcServer ###
+GrpcServer/__pycache__
+GrpcServer/.idea
