@@ -1,13 +1,8 @@
 ﻿#region snippet2
 using System;
-using System.Net.Http;
 using System.Threading.Tasks;
 using Grpc.Net.Client;
 using Grpc.Core;
-using System.Linq;
-using System.Collections.Generic;
-using System.IO;
-using System.Security.Cryptography.X509Certificates;
 
 namespace GrpcGreeterClient
 {
