@@ -1,7 +1,7 @@
 syntax="proto3";
 import "google/protobuf/wrappers.proto";
 
-option csharp_namespace="GrpcGreeterClient";
+option csharp_namespace="GrpcClient";
 
 service Exporter {
   // Export to postgreSQL

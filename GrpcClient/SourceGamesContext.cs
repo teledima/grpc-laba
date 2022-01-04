@@ -3,7 +3,7 @@ using System.Reflection;
 using System.Text;
 using Microsoft.Data.Sqlite;
 
-namespace GrpcGreeterClient
+namespace GrpcClient
 {
     public class SourceGamesHelper
     {

@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Grpc.Net.Client;
 using Grpc.Core;
 
-namespace GrpcGreeterClient
+namespace GrpcClient
 {
     class Program
     {
@@ -16,7 +16,7 @@ namespace GrpcGreeterClient
             var rows = new SourceGamesHelper("games.db").GetRows();
 
             // The port number(5001) must match the port of the gRPC server.
-            using var channel = GrpcChannel.ForAddress("http://192.168.1.44:5001");
+            using var channel = GrpcChannel.ForAddress(Settings.Default.grpc_server_addr);
             var client = new Exporter.ExporterClient(channel);
 
             Console.WriteLine("Start export");
@@ -25,6 +25,7 @@ namespace GrpcGreeterClient
             {
                 foreach (SourceGames sourceGame in rows)
                 {
+                    Console.Write(string.Format("Export [{0, -20}][{1, -20}][{2, -15}][{3, -40}]; ", sourceGame.GamesName, sourceGame.AchievementsName, sourceGame.CategoriesName, sourceGame.DownloadableContentsName));
                     var reply = await client.ExportAsync(
                                       new Row
                                       {
@@ -33,7 +34,7 @@ namespace GrpcGreeterClient
                                           CategoryName = sourceGame.CategoriesName,
                                           DownloadableContentName = sourceGame.DownloadableContentsName
                                       }, callOptions);
-                    Console.WriteLine(string.Format("Status export: {0}", reply.Ok));
+                    Console.WriteLine(string.Format("status: {0, -2}", reply.Ok));
                 }
             }
             catch (RpcException ex)
